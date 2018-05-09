@@ -1,20 +1,20 @@
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
+const postSchema = new Schema(
+  {
+    content: String,
+    photo: String,
+    user: [{ type: Schema.Types.ObjectId, ref: "User", require: true }],
+    isResolve: { type: Boolean, default: false }
+  },
+  {
+    timestamps: {
+      createdAt: "created_at",
+      updatedAt: "updated_at"
+    }
+  }
+);
 
-// const mongoose = require("mongoose");
-// const Schema = mongoose.Schema;
-
-// const postSchema = new Schema(
-//   {
-//       content: String,
-//       photo: String
-//   },
-//   {
-//     timestamps: {
-//       createdAt: "created_at",
-//       updatedAt: "updated_at"
-//     }
-//   }
-// );
-
-// const Post = mongoose.model("Post", postSchema);
-// module.exports = Post;
+const Post = mongoose.model("Post", postSchema);
+module.exports = Post;

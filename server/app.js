@@ -84,8 +84,8 @@ app.use("/", index);
 const authRoutes = require("./routes/auth");
 app.use("/auth", authRoutes);
 
-// const mapRoutes = require("./routes/map");
-// app.use("/map", mapRoutes);
+const postRoutes = require("./routes/post");
+app.use("/post", postRoutes);
 
 app.use(function(req, res) {
   res.sendfile(__dirname + '/public/index.html');
