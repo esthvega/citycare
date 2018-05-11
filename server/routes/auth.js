@@ -1,6 +1,7 @@
 const express = require("express");
 const authRoutes = express.Router();
 const User = require("../models/User");
+const Post = require("../models/Post")
 
 // Bcrypt to encrypt passwords
 const bcrypt = require("bcrypt");
@@ -85,6 +86,16 @@ authRoutes.get('/logout', (req, res) => {
 
 // PRIVATE PAGE
 
+
+authRoutes.get("/private/:id", (req, res, next) => {
+  console.log(req.params.id);
+  User.findById(req.params.id)
+    .populate("posts")
+    .then(post => res.status(200).json(post))
+    .catch(e => res.status(500).json(e));
+});
+
+
 authRoutes.get('/private', (req, res, next) => {
   if (req.isAuthenticated()) {
     res.json({ message: 'This is a private message' });
@@ -95,3 +106,6 @@ authRoutes.get('/private', (req, res, next) => {
 });
 
 module.exports = authRoutes;
+
+
+

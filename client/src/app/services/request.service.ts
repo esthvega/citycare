@@ -21,4 +21,5 @@ export class RequestService {
   postNew(info) {
     return this.http.post(`${this.BASEURL}/new`, info, this.options).map(res=> res.json());
   }
+
 }

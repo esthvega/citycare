@@ -1,3 +1,13 @@
-<p>
-  userProfile works!
-</p>
+<div *ngIf="sessionService.user">
+Username:
+    {{user.username}}
+    <br>
+Dni:
+{{user.dni}}   
+    <div *ngFor="let post of user.posts">
+        <ul>
+     <li>   {{post.subject}} </li>
+
+    </ul>
+    </div>
+</div>

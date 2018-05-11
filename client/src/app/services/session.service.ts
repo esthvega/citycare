@@ -51,11 +51,7 @@ export class SessionService {
       .map(user => this.handleUser(user))
       .catch(this.handleError);
   }
-  // getPrivateData() {
-  //   return this.http.get(`${this.BASEURL}/private`, this.options)
-  //     .map(res => res.json())
-  //     .map(user => this.handleUser(user))
-  //     .catch(this.handleError);
-  // }
-
+  getProfile(id) {
+    return this.http.get(`${this.BASEURL}/private/${id}`).map(res => res.json());
+  }
 }
