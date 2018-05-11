@@ -1,0 +1,19 @@
+<p>
+  postNew works!
+</p>
+<form>
+  Address:
+  <input [(ngModel)]="postInfo.address" name="address">
+  <br>
+  Subject:
+  <input [(ngModel)]="postInfo.subject" name="subject">
+  <br>
+  Photo:
+  <input [(ngModel)]="postInfo.photo" name="photo">
+  <br>
+  Content:
+  <textarea [(ngModel)]="postInfo.content" name="content"> </textarea>
+
+
+  <button (click)="postNew()">New Post</button>
+</form>

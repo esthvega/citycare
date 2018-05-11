@@ -3,8 +3,9 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
   {
-    username: String,
-    password: String,
+    username: {type: String, required: true},
+    password: {type: String, required: true},
+    dni: {type: String, required: true}, 
     posts: [{ type: Schema.Types.ObjectId, ref: "Posts" }],
     isAdmin: {type: Boolean, default: false}
   },

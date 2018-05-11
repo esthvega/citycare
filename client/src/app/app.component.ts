@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { SessionService } from './services/session.service'
+import { SessionService } from './services/session.service';
+import { RequestService } from './services/request.service';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,7 @@ export class AppComponent {
   }
 user: any;
 error: string;
+data: any;
 
 constructor (private session: SessionService) {}
 
@@ -32,7 +34,13 @@ login() {
       (err) => this.error = err
     );
 }
-
+// getPrivateData() {
+//   this.session.getPrivateData()
+//     .subscribe(
+//       (data) => this.data = data,
+//       (err) => this.error = err
+//     );
+// }
 
 }
 

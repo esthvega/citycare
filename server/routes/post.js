@@ -14,12 +14,14 @@ postRoutes.get("/", (req, res) => {
 postRoutes.post("/new", isLogged, (req, res, next) => {
   const newPost = new Post({
     content: req.body.content,
-    user: req.body.user
+    user: req.user.id,
+    address: req.body.address,
+    subject: req.body.subject,
   });
   newPost.save(function(err, post) {
     if (err) {
       console.log(err);
-      return res.send(500);
+      return res.status(500).json({message: "que coños es esto"});
     } else {
       User.findByIdAndUpdate(post.user, { $push: { posts: post._id } }).then(
         () => res.status(200).json(post)
@@ -27,6 +29,7 @@ postRoutes.post("/new", isLogged, (req, res, next) => {
     }
   });
 });
+
 
 postRoutes.put("/edit/:id", isAdmin, (req, res, next) => {
   const postId = req.params.id;
@@ -39,6 +42,18 @@ postRoutes.put("/edit/:id", isAdmin, (req, res, next) => {
  res.json({message: 'post succesfully updated', post: post})
    }
   )})
-//})
+
+  postRoutes.get("/detail/:id", (req, res, next) => {
+
+    Post.findById((req.params.id), function(err,post){  
+    if(err) {
+      return res.status(500).json(err);
+    }
+    console.log(post)
+     res.status(200).json(post)
+    })
+  
+  })
+
 
 module.exports = postRoutes;

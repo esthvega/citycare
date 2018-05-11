@@ -1,0 +1,19 @@
+
+<h1> POSTS</h1>
+
+<div *ngFor="let post of posts">
+{{post.subject}} 
+<a [routerLink]="['/post/detail', post._id]">Details</a>
+</div>
+<div *ngIf=!sessionService.user>
+    Login or signup to add a post
+    <a [routerLink]="['/auth/signup']">Signup or Login</a>
+
+</div>
+
+<div *ngIf=sessionService.user> 
+
+    <button (click)="logout()"> logout </button>
+    <a [routerLink]="['/post/new']">Add a post </a>
+    <a [routerLink]="['/auth/private']"> My profile </a>
+</div>

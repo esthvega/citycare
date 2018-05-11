@@ -12,7 +12,8 @@ mongoose.connect(process.env.MONGODB_URI);
 const user = [
   {
     username: "pepe",
-    password: bcrypt.hashSync("1234", salt)
+    password: bcrypt.hashSync("1234", salt),
+    dni: "7p"
   }
 ];
 
@@ -24,7 +25,9 @@ User.create(user, (err, arrayUser) => {
   const post = [
     {
       content: "Esto es un post",
-      user: arrayUser[0]._id
+      user: arrayUser[0]._id,
+      subject: "Oyes que hay una farola rota",
+      address: "La calle de tu corazon",
     }
   ];
   Post.create(post, (err, arrayPost) => {

@@ -8,9 +8,11 @@ import { Router } from "@angular/router";
   styleUrls: ["./signup.component.css"]
 })
 export class SignupComponent implements OnInit {
+  user: any;
   formInfo = {
     username: "",
-    password: ""
+    password: "",
+    dni: ""
   };
 
   constructor(public sessionService: SessionService, public router: Router) {}
@@ -20,7 +22,8 @@ export class SignupComponent implements OnInit {
   signup() {
     const user = {
       username: this.formInfo.username,
-      password: this.formInfo.password
+      password: this.formInfo.password,
+      dni: this.formInfo.dni
     };
     console.log(user)
     this.sessionService

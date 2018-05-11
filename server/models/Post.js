@@ -3,9 +3,11 @@ const Schema = mongoose.Schema;
 
 const postSchema = new Schema(
   {
-    content: String,
+    address: {type: String, required: true},
+    subject: {type: String, required: true},
+    content: {type: String, required: true},
     photo: String,
-    user: [{ type: Schema.Types.ObjectId, ref: "User", require: true }],
+    user: [{ type: Schema.Types.ObjectId, ref: "User", required: true }],
     isResolve: { type: Boolean, default: false }
   },
   {

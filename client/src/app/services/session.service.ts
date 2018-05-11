@@ -48,9 +48,14 @@ export class SessionService {
   isLoggedIn() {
     return this.http.get(`${this.BASEURL}/loggedin`,this.options)
       .map(res => res.json())
-      
+      .map(user => this.handleUser(user))
       .catch(this.handleError);
   }
-
+  // getPrivateData() {
+  //   return this.http.get(`${this.BASEURL}/private`, this.options)
+  //     .map(res => res.json())
+  //     .map(user => this.handleUser(user))
+  //     .catch(this.handleError);
+  // }
 
 }

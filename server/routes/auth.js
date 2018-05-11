@@ -16,10 +16,10 @@ const logInPromise = (user, req) => new Promise((resolve,reject) => {
 });  
 
 authRoutes.post("/signup", (req, res, next) => {
-  const {username, password} = req.body
+  const {username, password, dni} = req.body
 
-  if (!username || !password) {
-    res.status(400).json({ message: 'Provide username and password' });
+  if (!username || !password || !dni) {
+    res.status(400).json({ message: 'Provide username, password and dni' });
     return;
   }
 
@@ -32,7 +32,8 @@ authRoutes.post("/signup", (req, res, next) => {
 
       const theUser = new User({
         username,
-        password: hashPass
+        password: hashPass,
+        dni
       });
   
       return theUser.save().then( user => logInPromise(user,req));
@@ -82,5 +83,15 @@ authRoutes.get('/logout', (req, res) => {
   }
 });
 
+// PRIVATE PAGE
+
+authRoutes.get('/private', (req, res, next) => {
+  if (req.isAuthenticated()) {
+    res.json({ message: 'This is a private message' });
+    return;
+  }
+
+  res.status(403).json({ message: 'Unauthorized' });
+});
 
 module.exports = authRoutes;
