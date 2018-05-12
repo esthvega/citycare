@@ -14,7 +14,7 @@ import { PostDetailComponent } from './postDetail/postDetail.component';
 import { RequestService } from './services/request.service';
 import { PostListComponent } from './postList/postList.component';
 import { PostNewComponent } from './postNew/postNew.component';
-
+import { FileSelectDirective } from "ng2-file-upload";
 
 @NgModule({
   declarations: [
@@ -25,7 +25,8 @@ import { PostNewComponent } from './postNew/postNew.component';
     UserProfileComponent,
     PostDetailComponent,
     PostListComponent,
-    PostNewComponent
+    PostNewComponent,
+    FileSelectDirective
 ],
   imports: [
     BrowserModule,

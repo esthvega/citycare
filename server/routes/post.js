@@ -4,6 +4,9 @@ const User = require("../models/User");
 const Post = require("../models/Post");
 const isAdmin = require("../middlewares/isAdmin");
 const isLogged = require("../middlewares/isLogged");
+const uploadCloud = require('../configs/cloudinary');
+
+
 
 postRoutes.get("/", (req, res) => {
   Post.find()
@@ -11,12 +14,19 @@ postRoutes.get("/", (req, res) => {
     .catch(e => res.status(500).json(e));
 });
 
-postRoutes.post("/new", isLogged, (req, res, next) => {
+
+postRoutes.post("/new", [isLogged, uploadCloud.single('file')], (req, res, next) => {
+  const content = req.body.content;
+  const user = req.user.id;
+  const address = req.body.address;
+  const subject = req.body.subject;
+  const photo = req.file.url;
   const newPost = new Post({
-    content: req.body.content,
-    user: req.user.id,
-    address: req.body.address,
-    subject: req.body.subject,
+    content,
+    user,
+    address,
+    subject,
+    photo 
   });
   newPost.save(function(err, post) {
     if (err) {
@@ -24,7 +34,7 @@ postRoutes.post("/new", isLogged, (req, res, next) => {
       return res.status(500).json({message: "que coños es esto"});
     } else {
       User.findByIdAndUpdate(post.user, { $push: { posts: post._id } }).then(
-        () => res.status(200).json(post)
+        () => res.status(200).json({message: 'New post created! Click navigate home to see it!', post: post})
       );
     }
   });

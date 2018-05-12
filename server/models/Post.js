@@ -8,7 +8,8 @@ const postSchema = new Schema(
     content: {type: String, required: true},
     photo: String,
     user: [{ type: Schema.Types.ObjectId, ref: "User", required: true }],
-    isResolve: { type: Boolean, default: false }
+    isResolve: { type: Boolean, default: false },
+    date: {type: Date, default: Date.now}
   },
   {
     timestamps: {

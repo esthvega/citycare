@@ -2,7 +2,15 @@
 <h1> POSTS</h1>
 
 <div *ngFor="let post of posts">
-{{post.subject}} 
+    {{post.date | date}}
+    Subject: 
+    <ul> 
+<li> {{post.subject}} </li>
+</ul>
+Address:
+<ul>
+<li>{{post.address}}</li>
+</ul>
 <a [routerLink]="['/post/detail', post._id]">Details</a>
 </div>
 <div *ngIf=!sessionService.user>

@@ -5,8 +5,10 @@ Username:
 Dni:
 {{user.dni}}   
     <div *ngFor="let post of user.posts">
+        My posts:
         <ul>
      <li>   {{post.subject}} </li>
+     <li><img src="{{post.photo}}" alt="" width="250"></li>
 
     </ul>
     </div>
