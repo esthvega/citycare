@@ -5,6 +5,10 @@ const Post = require("../models/Post");
 const isAdmin = require("../middlewares/isAdmin");
 const isLogged = require("../middlewares/isLogged");
 const uploadCloud = require('../configs/cloudinary');
+const googleMapsClient = require("@google/maps").createClient({
+  key: process.env.MAPSAPI,
+  Promise: Promise
+});
 
 
 
@@ -16,18 +20,33 @@ postRoutes.get("/", (req, res) => {
 
 
 postRoutes.post("/new", [isLogged, uploadCloud.single('file')], (req, res, next) => {
+console.log("HEEEEEEEEEEEELLO")
   const content = req.body.content;
   const user = req.user.id;
   const address = req.body.address;
   const subject = req.body.subject;
   const photo = req.file.url;
-  const newPost = new Post({
-    content,
-    user,
-    address,
-    subject,
-    photo 
-  });
+
+    googleMapsClient
+      .geocode({ address })
+      .asPromise()
+      .then(data => {
+        lat = data.json.results[0].geometry.viewport.northeast.lat;
+        lng = data.json.results[0].geometry.viewport.northeast.lng;
+
+        const location = {
+          type: "Point",
+          coordinates: [lat, lng]
+        };
+        const newPost = new Post({
+          content,
+          user,
+          address,
+          subject,
+          photo,
+          location
+        });
+      
   newPost.save(function(err, post) {
     if (err) {
       console.log(err);
@@ -37,7 +56,7 @@ postRoutes.post("/new", [isLogged, uploadCloud.single('file')], (req, res, next)
         () => res.status(200).json({message: 'New post created! Click navigate home to see it!', post: post})
       );
     }
-  });
+  })})
 });
 
 

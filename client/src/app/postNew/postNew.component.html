@@ -1,7 +1,7 @@
 <p>
   postNew works!
 </p>
-<form>
+<form (ngSubmit)="postNew(resetForm)" #resetForm="ngForm">
     <fieldset>
   Address:
   <input [(ngModel)]="postInfo.address" name="address">
@@ -10,14 +10,14 @@
   <input [(ngModel)]="postInfo.subject" name="subject">
   <br>
   Photo:
-  <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
+  <input type="file" name="file" ng2FileSelect [uploader]="uploader" id="file_upload" class="file" #myInput (change)="onChange($event)"/>
   <!-- <input [(ngModel)]="postInfo.photo" name="photo"> -->
   <br>
   Content:
   <textarea [(ngModel)]="postInfo.content" name="content"> </textarea>
 
 
-  <button (click)="postNew()">New Post</button>
+  <button>New Post</button>
 </fieldset>
 </form>
 <p> {{ feedback }} </p>

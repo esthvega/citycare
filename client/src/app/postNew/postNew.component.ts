@@ -3,6 +3,7 @@ import { SessionService } from "../services/session.service";
 import { Router } from "@angular/router";
 import { RequestService } from "../services/request.service";
 import { FileUploader } from "ng2-file-upload";
+import { ViewChild } from '@angular/core';
 
 @Component({
   selector: "app-postNew",
@@ -14,7 +15,8 @@ export class PostNewComponent implements OnInit {
   uploader: FileUploader = new FileUploader ({   
     url: `${this.BASEURL}/new`
   });
-
+  @ViewChild('myInput')
+  myInputVariable: any;
   postInfo = {
     address: "",
     subject: "",
@@ -37,7 +39,8 @@ feedback: string;
         this.feedback = JSON.parse(response).message;
     };
  }
-  postNew() {
+  postNew(resetForm) {
+    console.log("JSHDFJFDLKJFLDGJ")
     this.uploader.onBuildItemForm = (item, form) => {
       form.append('address', this.postInfo.address);
       form.append('subject', this.postInfo.subject);
@@ -45,7 +48,14 @@ feedback: string;
     };
 
     this.uploader.uploadAll()
-    this.router.navigate(['/home'])
+     resetForm.reset()
+     this.myInputVariable.nativeElement.value = "";
+    // const file = document.querySelector('file');
+    // file.id = '';
+   
+  
+   
+    // this.router.navigate(['/home'])
   }
   
 }

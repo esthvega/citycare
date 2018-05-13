@@ -9,7 +9,11 @@ const postSchema = new Schema(
     photo: String,
     user: [{ type: Schema.Types.ObjectId, ref: "User", required: true }],
     isResolve: { type: Boolean, default: false },
-    date: {type: Date, default: Date.now}
+    date: {type: Date, default: Date.now},
+    location: {
+      type: { type: String },
+      coordinates: [Number]
+    },
   },
   {
     timestamps: {

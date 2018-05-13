@@ -10,7 +10,10 @@ import { Router } from '@angular/router';
   providers: [RequestService]
 })
 export class PostListComponent implements OnInit {
-
+  title: string = 'My first AGM project';
+  lat: number = 40.938392;
+  lng: number = -4.113233;
+  zoom: number = 12;
 posts: Array<any>;
 
   constructor(public requestService: RequestService, public sessionService: SessionService, public router: Router) { }

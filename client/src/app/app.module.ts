@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ApplicationRef } from '@angular/core';
 import { SessionService } from './services/session.service';
 import { HttpModule } from '@angular/http';
 import { routes } from './routes.routing';
@@ -15,6 +15,9 @@ import { RequestService } from './services/request.service';
 import { PostListComponent } from './postList/postList.component';
 import { PostNewComponent } from './postNew/postNew.component';
 import { FileSelectDirective } from "ng2-file-upload";
+import { CommonModule } from '@angular/common';
+import { AgmCoreModule } from '@agm/core';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +35,10 @@ import { FileSelectDirective } from "ng2-file-upload";
     BrowserModule,
     HttpModule,
     RouterModule.forRoot(routes),
-    FormsModule
+    FormsModule,
+    CommonModule,
+    AgmCoreModule.forRoot({apiKey:"AIzaSyDk4w3eKpZ9QAPmbxQTqXJQkxkKe7rqm54"})
+
   ],
   providers: [SessionService, RequestService],
   bootstrap: [AppComponent]

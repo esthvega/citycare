@@ -10,6 +10,7 @@
 Address:
 <ul>
 <li>{{post.address}}</li>
+
 </ul>
 <a [routerLink]="['/post/detail', post._id]">Details</a>
 </div>
@@ -25,3 +26,6 @@ Address:
     <a [routerLink]="['/post/new']">Add a post </a>
     <a [routerLink]="['/auth/private']"> My profile </a>
 </div>
+<agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+      </agm-map>
