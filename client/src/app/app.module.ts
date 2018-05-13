@@ -17,7 +17,7 @@ import { PostNewComponent } from './postNew/postNew.component';
 import { FileSelectDirective } from "ng2-file-upload";
 import { CommonModule } from '@angular/common';
 import { AgmCoreModule } from '@agm/core';
-
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -37,7 +37,7 @@ import { AgmCoreModule } from '@agm/core';
     RouterModule.forRoot(routes),
     FormsModule,
     CommonModule,
-    AgmCoreModule.forRoot({apiKey:"AIzaSyDk4w3eKpZ9QAPmbxQTqXJQkxkKe7rqm54"})
+    AgmCoreModule.forRoot({apiKey: environment.apiKEY })
 
   ],
   providers: [SessionService, RequestService],
