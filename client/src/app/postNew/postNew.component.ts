@@ -21,7 +21,7 @@ export class PostNewComponent implements OnInit {
     address: "",
     subject: "",
     content: "",
-    photo: ""
+    photo: "",
   };
 feedback: string;
   constructor(

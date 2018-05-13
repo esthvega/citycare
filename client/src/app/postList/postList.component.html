@@ -27,5 +27,7 @@ Address:
     <a [routerLink]="['/auth/private']"> My profile </a>
 </div>
 <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
-        <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+        <agm-marker *ngFor="let m of markers" [latitude]="m.lat" [longitude]="m.lng"></agm-marker>
       </agm-map>
+
+   
