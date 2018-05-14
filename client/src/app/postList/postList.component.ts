@@ -17,6 +17,7 @@ export class PostListComponent implements OnInit {
   zoom: number = 12;
   posts: Array<any>;
   markers: Array<any> = [];
+  date: any;
 
   constructor(
     public requestService: RequestService,
@@ -26,14 +27,18 @@ export class PostListComponent implements OnInit {
 
   ngOnInit() {
     this.requestService.getPostList().subscribe(posts => {
+      console.log("DATE:", posts[0].created_at)
       this.posts = posts;
-      console.log(posts[0].location.coordinates);
+      // console.log(posts[0].location.coordinates);
       posts.forEach((post, i) => {
         this.markers.push({
           lat: posts[i].location.coordinates[0],
           lng: posts[i].location.coordinates[1]
         });
       });
+      this.posts.forEach((post, i) => {
+        this
+      })
     });
   }
   logout() {

@@ -13,14 +13,18 @@ const googleMapsClient = require("@google/maps").createClient({
 
 
 postRoutes.get("/", (req, res) => {
-  Post.find()
+  // this.post = post;
+  // console.log(post)
+  // Post.findOneAndUpdate(post, {$sort: {date: -1}})
+    Post.find()
+    .sort({date: -1})
     .then(post => res.status(200).json(post))
     .catch(e => res.status(500).json(e));
 });
 
 
 postRoutes.post("/new", [isLogged, uploadCloud.single('file')], (req, res, next) => {
-console.log("HEEEEEEEEEEEELLO")
+console.log("HEEEEEEEEEEEELLO FILEEE")
   const content = req.body.content;
   const user = req.user.id;
   const address = req.body.address;
