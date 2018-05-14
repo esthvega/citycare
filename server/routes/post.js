@@ -60,15 +60,14 @@ console.log("HEEEEEEEEEEEELLO")
 });
 
 
-postRoutes.put("/edit/:id", isAdmin, (req, res, next) => {
+postRoutes.get("/edit/:id", isAdmin, (req, res, next) => {
   const postId = req.params.id;
-  console.log(postId)
-  Post.findByIdAndUpdate(postId,  {$set: {isResolve: true}}, function(err, post) 
+  Post.findByIdAndUpdate(postId,  {$set: {isResolve: true}}, {new:true}, function(err, post) 
    {
     if(err) {
       return res.status(400).json({message: "Unable to update post", error: err})
     }
- res.json({message: 'post succesfully updated', post: post})
+ res.json({message: 'post succesfully updated', post})
    }
   )})
 
@@ -78,7 +77,6 @@ postRoutes.put("/edit/:id", isAdmin, (req, res, next) => {
     if(err) {
       return res.status(500).json(err);
     }
-    console.log(post)
      res.status(200).json(post)
     })
   

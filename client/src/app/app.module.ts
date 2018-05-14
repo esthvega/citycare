@@ -18,6 +18,8 @@ import { FileSelectDirective } from "ng2-file-upload";
 import { CommonModule } from '@angular/common';
 import { AgmCoreModule } from '@agm/core';
 import { environment } from '../environments/environment';
+import { PostEditComponent } from './postEdit/postEdit.component';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { environment } from '../environments/environment';
     PostDetailComponent,
     PostListComponent,
     PostNewComponent,
-    FileSelectDirective
+    FileSelectDirective,
+    PostEditComponent
 ],
   imports: [
     BrowserModule,

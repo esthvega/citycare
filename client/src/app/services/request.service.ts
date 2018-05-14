@@ -10,7 +10,7 @@ export class RequestService {
   options: any = { withCredentials: true };
 
   constructor(private http: Http) {}
-
+  user: any
   getPostList() {
     return this.http.get(`${this.BASEURL}`).map((res: Response) => res.json());
   }
@@ -21,6 +21,11 @@ export class RequestService {
   postNew(info) {
     return this.http.post(`${this.BASEURL}/new`, info, this.options).map(res=> res.json());
   }
+
+  // editPost(postId){
+  //   console.log(this.user)
+  //   return this.http.get(`${this.BASEURL}/edit/${postId}`, this.options).map(res => res.json());
+  // }
   // submit(info) {
   //   return this.http.post(`${this.BASEURL}/new`, info, this.options).map(res=> res.json());
   // }

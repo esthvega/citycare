@@ -27,23 +27,13 @@ export class PostListComponent implements OnInit {
   ngOnInit() {
     this.requestService.getPostList().subscribe(posts => {
       this.posts = posts;
-      console.log(posts[0].location.coordinates)
+      console.log(posts[0].location.coordinates);
       posts.forEach((post, i) => {
         this.markers.push({
           lat: posts[i].location.coordinates[0],
           lng: posts[i].location.coordinates[1]
         });
-      } )
-    
-      // posts.forEach(post => {
-      //   console.log("HOOOOOOLAAAAAAAAAAAA")
-      //   const pin = new google.maps.Marker({
-      //     position: {
-      //       lat: post.location.coordinates[0],
-      //       lng: post.location.coordinates[1]
-      //     }
-      //   })
-      // })
+      });
     });
   }
   logout() {
@@ -51,5 +41,19 @@ export class PostListComponent implements OnInit {
       .logout()
       .subscribe(() => this.router.navigate(["/auth/signup"]));
   }
+  // editPost(post) {
+  //   this.requestService.editPost(post.id).subscribe(()=> this.router.navigate(["/home"]))
+  // }
 }
 
+// postRoutes.put("/edit/:id", isAdmin, (req, res, next) => {
+//   const postId = req.params.id;
+//   console.log(postId)
+//   Post.findByIdAndUpdate(postId,  {$set: {isResolve: true}}, function(err, post) 
+//    {
+//     if(err) {
+//       return res.status(400).json({message: "Unable to update post", error: err})
+//     }
+//  res.json({message: 'post succesfully updated', post: post})
+//    }
+//   )})

@@ -8,6 +8,7 @@ import { UserProfileComponent } from './userProfile/userProfile.component';
 import { PostDetailComponent } from './postDetail/postDetail.component';
 import { PostListComponent } from './postList/postList.component'
 import { PostNewComponent } from './postNew/postNew.component';
+import { PostEditComponent } from './postEdit/postEdit.component'
 
 
 export const routes: Routes = [
@@ -18,7 +19,8 @@ export const routes: Routes = [
   { path: "auth/login", component: LoginComponent },
   { path: "post/detail/:id", component: PostDetailComponent},
   { path: "post/new", component: PostNewComponent },
-  { path: "auth/private", component: UserProfileComponent}
+  { path: "auth/private", component: UserProfileComponent},
+{path: "post/edit/:id", component: PostEditComponent }
 ];
 
 
