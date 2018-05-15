@@ -30,4 +30,5 @@ export class PostDetailComponent implements OnInit {
       .editPost(this.post._id)
       .subscribe(() => this.router.navigate(["/home"]));
   }
-}
+
+ }

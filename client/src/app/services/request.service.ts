@@ -22,6 +22,8 @@ export class RequestService {
     return this.http.post(`${this.BASEURL}/new`, info, this.options).map(res=> res.json());
   }
 
+  
+
   // editPost(postId){
   //   console.log(this.user)
   //   return this.http.get(`${this.BASEURL}/edit/${postId}`, this.options).map(res => res.json());

@@ -4,6 +4,8 @@ import { Router } from "@angular/router";
 import { RequestService } from "../services/request.service";
 import { FileUploader } from "ng2-file-upload";
 import { ViewChild } from '@angular/core';
+// import { PostListComponent } from '../postList/postList.component';
+// import { componentRefresh } from "@angular/core/src/render3";
 
 @Component({
   selector: "app-postNew",
@@ -25,6 +27,7 @@ export class PostNewComponent implements OnInit {
   };
 feedback: string;
   constructor(
+    // public postListComponent: PostListComponent,
     public requestService: RequestService,
     public router: Router,
     public sessionService: SessionService
@@ -33,6 +36,8 @@ feedback: string;
   ngOnInit() {
     this.uploader.onSuccessItem = (item, response) => {
       this.feedback = JSON.parse(response).message;
+      console.log(item);
+      this.router.navigate(['/home'])
     };
 
     this.uploader.onErrorItem = (item, response, status, headers) => {
@@ -45,17 +50,29 @@ feedback: string;
       form.append('address', this.postInfo.address);
       form.append('subject', this.postInfo.subject);
       form.append('content', this.postInfo.content);
-    };
+    }
 
-    this.uploader.uploadAll()
-     resetForm.reset()
-     this.myInputVariable.nativeElement.value = "";
-    // const file = document.querySelector('file');
-    // file.id = '';
-   
-  
-   
-    // this.router.navigate(['/home'])
+    let promise = new Promise((res,rej)=>{
+      this.uploader.uploadAll()
+      resetForm.reset()
+      this.myInputVariable.nativeElement.value = "";
+     // const file = document.querySelector('file');
+     // file.id = '';
+    })
+
+    
+    
+     promise.then(()=>{
+       this.requestService.getPostList().subscribe((post) => {
+      //console.log(post)
+    })
+     this.router.navigate(['/home'])
+    })
+     .catch(err=>console.log(err))
+    //  this.requestService.getPostList()
+    
+    
+    //  window.location.reload()
   }
   
 }

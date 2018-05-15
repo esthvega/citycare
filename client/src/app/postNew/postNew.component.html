@@ -10,8 +10,7 @@
   <input [(ngModel)]="postInfo.subject" name="subject">
   <br>
   Photo:
-  <input type="file" name="file" ng2FileSelect [uploader]="uploader" id="file_upload" class="file" #myInput (change)="onChange($event)"/>
-  <!-- <input [(ngModel)]="postInfo.photo" name="photo"> -->
+  <input type="file" name="file" ng2FileSelect [uploader]="uploader" id="file_upload" class="file" #myInput/>
   <br>
   Content:
   <textarea [(ngModel)]="postInfo.content" name="content"> </textarea>

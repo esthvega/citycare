@@ -19,6 +19,7 @@ import { CommonModule } from '@angular/common';
 import { AgmCoreModule } from '@agm/core';
 import { environment } from '../environments/environment';
 // import { PostEditComponent } from './postEdit/postEdit.component';
+import { IsResolvedPipe } from './isResolved.pipe';
 
 
 @NgModule({
@@ -31,8 +32,9 @@ import { environment } from '../environments/environment';
     PostDetailComponent,
     PostListComponent,
     PostNewComponent,
-    FileSelectDirective
-    // PostEditComponent
+    FileSelectDirective,
+    // PostEditComponent,
+    IsResolvedPipe
 ],
   imports: [
     BrowserModule,

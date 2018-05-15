@@ -3,12 +3,14 @@ import { RequestService } from "../services/request.service";
 import { SessionService } from "../services/session.service";
 import { Router } from "@angular/router";
 import { google } from "@agm/core/services/google-maps-types";
+import {IsResolvedPipe } from '../isResolved.pipe';
+
 
 @Component({
   selector: "app-postList",
   templateUrl: "./postList.component.html",
   styleUrls: ["./postList.component.css"],
-  providers: [RequestService]
+  providers: [RequestService, IsResolvedPipe ]
 })
 export class PostListComponent implements OnInit {
   title: string = "My first AGM project";
@@ -23,42 +25,46 @@ export class PostListComponent implements OnInit {
     public requestService: RequestService,
     public sessionService: SessionService,
     public router: Router
-  ) {}
+  ) {
+    this.requestService.getPostList().subscribe(posts => {
+      this.posts = posts;
+      this.refreshPostList();
+    });
+  }
 
   ngOnInit() {
     this.requestService.getPostList().subscribe(posts => {
-      console.log("DATE:", posts[0].created_at)
       this.posts = posts;
-      // console.log(posts[0].location.coordinates);
+      // let postResolved = posts.forEach((post, i) => {
+      //   posts[i].isResolve = true;
+      // });
+
+      console.log(posts);
       posts.forEach((post, i) => {
         this.markers.push({
           lat: posts[i].location.coordinates[0],
           lng: posts[i].location.coordinates[1]
         });
       });
+      // console.log(postResolved)
       this.posts.forEach((post, i) => {
-        this
-      })
+        this;
+      });
     });
   }
+
+//   postResolved(posts) { 
+//     posts.forEach((post, i) => {
+//     posts[i].isResolve = true;
+//   });
+// }
+
   logout() {
     this.sessionService
       .logout()
       .subscribe(() => this.router.navigate(["/auth/signup"]));
   }
-  // editPost(post) {
-  //   this.requestService.editPost(post.id).subscribe(()=> this.router.navigate(["/home"]))
-  // }
+  refreshPostList() {
+    this.requestService.getPostList().subscribe(posts => (this.posts = posts));
+  }
 }
-
-// postRoutes.put("/edit/:id", isAdmin, (req, res, next) => {
-//   const postId = req.params.id;
-//   console.log(postId)
-//   Post.findByIdAndUpdate(postId,  {$set: {isResolve: true}}, function(err, post) 
-//    {
-//     if(err) {
-//       return res.status(400).json({message: "Unable to update post", error: err})
-//     }
-//  res.json({message: 'post succesfully updated', post: post})
-//    }
-//   )})
