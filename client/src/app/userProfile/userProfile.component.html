@@ -12,4 +12,7 @@ Dni:
 
     </ul>
     </div>
+    <div *ngIf="sessionService.user.isAdmin">
+            <a [routerLink]="['/post/all']">All posts </a>
+          </div>
 </div>

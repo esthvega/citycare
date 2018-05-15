@@ -3,14 +3,14 @@ import { RequestService } from "../services/request.service";
 import { SessionService } from "../services/session.service";
 import { Router } from "@angular/router";
 import { google } from "@agm/core/services/google-maps-types";
-import {IsResolvedPipe } from '../isResolved.pipe';
+import { MouseEvent } from '@agm/core';
 
 
 @Component({
   selector: "app-postList",
   templateUrl: "./postList.component.html",
   styleUrls: ["./postList.component.css"],
-  providers: [RequestService, IsResolvedPipe ]
+  providers: [RequestService]
 })
 export class PostListComponent implements OnInit {
   title: string = "My first AGM project";
@@ -35,28 +35,32 @@ export class PostListComponent implements OnInit {
   ngOnInit() {
     this.requestService.getPostList().subscribe(posts => {
       this.posts = posts;
-      // let postResolved = posts.forEach((post, i) => {
-      //   posts[i].isResolve = true;
-      // });
-
-      console.log(posts);
       posts.forEach((post, i) => {
-        this.markers.push({
-          lat: posts[i].location.coordinates[0],
-          lng: posts[i].location.coordinates[1]
-        });
+        if (!post.isResolve) {
+          console.log(post);
+          this.markers.push({
+            subject: posts[i].subject,
+            content: posts[i].content,
+            id: posts[i]._id,
+            lat: posts[i].location.coordinates[0],
+            lng: posts[i].location.coordinates[1]
+          });
+        }
       });
-      // console.log(postResolved)
+
+      console.log(this.markers,"HOLA MARKERS");
       this.posts.forEach((post, i) => {
         this;
       });
     });
   }
-
-//   postResolved(posts) { 
-//     posts.forEach((post, i) => {
-//     posts[i].isResolve = true;
-//   });
+  clickedMarker(label: string, index: number) {
+    console.log(`clicked the marker`)
+  }
+// getAllPosts(){
+//   this.requestService.getPostList().subscribe(posts => {
+//     this.posts = posts;
+//   })
 // }
 
   logout() {

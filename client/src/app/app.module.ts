@@ -18,8 +18,8 @@ import { FileSelectDirective } from "ng2-file-upload";
 import { CommonModule } from '@angular/common';
 import { AgmCoreModule } from '@agm/core';
 import { environment } from '../environments/environment';
-// import { PostEditComponent } from './postEdit/postEdit.component';
-import { IsResolvedPipe } from './isResolved.pipe';
+import { AllPostComponent } from './allPost/allPost.component';
+
 
 
 @NgModule({
@@ -33,8 +33,7 @@ import { IsResolvedPipe } from './isResolved.pipe';
     PostListComponent,
     PostNewComponent,
     FileSelectDirective,
-    // PostEditComponent,
-    IsResolvedPipe
+    AllPostComponent
 ],
   imports: [
     BrowserModule,

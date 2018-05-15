@@ -1,36 +1,42 @@
-
 <h1> POSTS</h1>
 <div *ngIf="posts">
-        
+
     <div *ngFor="let post of posts">
         <div *ngIf="!post.isResolve">
-    {{post.date | date}}
-    Subject: 
-    <ul> 
-<li> {{post.subject}} </li>
-</ul>
-Address:
-<ul>
-<li>{{post.address}}</li>
+            {{post.date | date}} Subject:
+            <ul>
+                <li> {{post.subject}} </li>
+            </ul>
+            Address:
+            <ul>
+                <li>{{post.address}}</li>
 
-</ul>
-<a [routerLink]="['/post/detail', post._id]">Details</a>
-</div>
-</div>
-<div *ngIf=!sessionService.user>
-    Login or signup to add a post
-    <a [routerLink]="['/auth/signup']">Signup or Login</a>
+            </ul>
+            <a [routerLink]="['/post/detail', post._id]">Details</a>
 
-</div>
-</div>
-<div *ngIf=sessionService.user> 
+        </div>
+        <div *ngIf=!sessionService.user>
+            Login or signup to add a post
+            <a [routerLink]="['/auth/signup']">Signup or Login</a>
 
-    <button (click)="logout()"> logout </button>
-    <a [routerLink]="['/post/new']">Add a post </a>
-    <a [routerLink]="['/auth/private']"> My profile </a>
-</div>
-<agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
-        <agm-marker *ngFor="let m of markers" [latitude]="m.lat" [longitude]="m.lng"></agm-marker>
-      </agm-map>
+        </div>
+    </div>
+    <div *ngIf=sessionService.user>
 
-   
+        <button (click)="logout()"> logout </button>
+        <a [routerLink]="['/post/new']">Add a post </a>
+        <a [routerLink]="['/auth/private']"> My profile </a>
+    </div>
+    <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+        <agm-marker *ngFor="let m of markers" [latitude]="m.lat" [longitude]="m.lng" (markerClick)="clickedMarker(m.label, i)" [label]="m.label">
+            <agm-info-window>
+                <strong>{{m.subject}}</strong>
+                    <br>
+                 <p>   {{m.content}} </p>
+                
+            </agm-info-window>
+
+        </agm-marker>
+
+    </agm-map>
+</div>

@@ -19,6 +19,13 @@ postRoutes.get("/", (req, res) => {
     .catch(e => res.status(500).json(e));
 });
 
+postRoutes.get("/all", isAdmin, (req, res) => {
+  Post.find()
+  .sort({date: -1})
+  .then(post => res.status(200).json(post))
+  .catch(e => res.status(500).json(e));
+});
+
 
 postRoutes.post("/new", [isLogged, uploadCloud.single('file')], (req, res, next) => {
   const content = req.body.content;
