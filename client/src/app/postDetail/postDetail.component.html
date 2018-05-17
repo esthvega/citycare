@@ -1,5 +1,4 @@
-<div *ngIf="post">
-  <div>
+<!-- <div *ngIf="post">
     <ul>
       <li> Dirección: {{post.address}} </li>
       <li>Asunto: {{post.subject}} </li>
@@ -8,9 +7,38 @@
       Photo:
      <li>  <img src="{{post.photo}}" alt="" width="250"> </li>
     </ul>
+    <div *ngIf="sessionService.user">
     <div *ngIf="sessionService.user.isAdmin">
-    <button (click)="editPost()">EDIT POST</button>
+    <button (click)="editPost()">POST RESUELTO</button>
   </div>
+</div>
+</div> -->
+<div class="detail">
+<div class="container">
+<div *ngIf="post">
+<div class="col s12 m7">
+    <h2 class="header">{{post.subject}}</h2>
+    <div class="card horizontal">
+      <div class="card-image">
+        <img src="{{post.photo}}">
+      </div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <p>Address: {{post.address}}</p>
+          <br>
+          Content: {{post.content}}
+        </div>
+        <div class="card-action">
+          <p>Status, is Resolve?: {{post.isResolve}}</p>
+        </div>
+        <div *ngIf="sessionService.user">
+            <div *ngIf="sessionService.user.isAdmin">
+            <button (click)="editPost()" class="waves-effect waves-light btn" >POST RESUELTO</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  
+</div>
+</div>
 </div>

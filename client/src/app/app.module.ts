@@ -19,7 +19,7 @@ import { CommonModule } from '@angular/common';
 import { AgmCoreModule } from '@agm/core';
 import { environment } from '../environments/environment';
 import { AllPostComponent } from './allPost/allPost.component';
-
+import { MaterializeModule } from "angular2-materialize";
 
 
 @NgModule({
@@ -41,7 +41,8 @@ import { AllPostComponent } from './allPost/allPost.component';
     RouterModule.forRoot(routes),
     FormsModule,
     CommonModule,
-    AgmCoreModule.forRoot({apiKey: environment.apiKEY })
+    AgmCoreModule.forRoot({apiKey: environment.apiKEY }),
+    MaterializeModule
 
   ],
   providers: [SessionService, RequestService],

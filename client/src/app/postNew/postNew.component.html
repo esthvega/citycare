@@ -1,6 +1,8 @@
 <p>
   postNew works!
 </p>
+<div class="principal">
+<div class="container">
 <form (ngSubmit)="postNew(resetForm)" #resetForm="ngForm">
     <fieldset>
   Address:
@@ -19,4 +21,6 @@
   <button>New Post</button>
 </fieldset>
 </form>
+</div>
+</div>
 <p> {{ feedback }} </p>

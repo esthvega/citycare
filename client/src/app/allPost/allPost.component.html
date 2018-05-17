@@ -1,7 +1,24 @@
-<p>
+<!-- <p>
   allPost works!
 </p>
 <div *ngFor="let post of posts">
   {{post.subject}}
   {{post.isResolve}}
-</div>
+
+</div> -->
+<div class="container">
+<div class="principal"> 
+      <div class="collection">
+          <div *ngFor="let post of posts">
+            <ul>
+              <li class="collection-item"> Subject: {{post.subject}}</li>
+              <li class="collection-item"> Is Resolve? {{post.isResolve}}</li>
+            </ul>
+        <a [routerLink]="['/post/detail', post._id]" class="collection-item">Details</a>
+  
+        </div>
+      </div>
+    </div>
+  </div>
+
+      <!--   -->

@@ -1,0 +1,6 @@
+nav {
+  background-color: #26a69a !important;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+}

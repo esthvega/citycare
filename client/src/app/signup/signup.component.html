@@ -1,5 +1,7 @@
+<div class="principal">
+<div class="container">
 <form>
-  <h2> Signup </h2>
+  <h2> Signup or Login</h2>
   <label> Username </label>
   <input type="text" [(ngModel)]="formInfo.username" name="username"/>
   <br>
@@ -8,6 +10,9 @@
   <br>
   <label> DNI </label>
   <input type="text" [(ngModel)]="formInfo.dni" name="dni"/>
-  <button (click)="signup()"> signup </button>
-  <button (click)="login()"> login </button>
+  <button class="waves-effect waves-light btn" (click)="signup()"> signup </button>
+  <button class="waves-effect waves-light btn" (click)="login()"> login </button>
 </form>
+</div>
+</div>
+

@@ -1,6 +1,31 @@
+
+  <nav>
+        <div *ngIf="session.user">
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo">cityCare</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                 <li>     <a [routerLink]="['/auth/private']">My profile</a></li>
+                  <!-- <li>    <a [routerLink]="['/home']"> Navigate homeee</a></li> -->
+                </ul>
+              </div>
+        </div>
+        <div *ngIf="!session.user">
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo">cityCare</a>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                 <li>     <a [routerLink]="['/auth/signup']">Signup</a></li>
+                  <!-- <li>    <a [routerLink]="['/home']"> Navigate homeee</a></li> -->
+                </ul>
+              </div>
+        </div>
+      </nav>
+            
+<!-- 
+<div>
+
 <a [routerLink]="['/auth/signup']">Signup or Login</a>
 
 <a [routerLink]="['/home']"> Navigate homeee</a>
-
+</div> -->
 <router-outlet> </router-outlet>
 

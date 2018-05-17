@@ -20,12 +20,12 @@ export class PostDetailComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.requestService.getPost(params.id).subscribe(post => {
-        (this.post = post), console.log(post);
+        this.post = post;
       });
     });
   }
   editPost() {
-    console.log("hola");
+    // console.log(this.sessionService)
     this.sessionService
       .editPost(this.post._id)
       .subscribe(() => this.router.navigate(["/home"]));

@@ -37,7 +37,7 @@ export class PostListComponent implements OnInit {
       this.posts = posts;
       posts.forEach((post, i) => {
         if (!post.isResolve) {
-          console.log(post);
+          // console.log(post);
           this.markers.push({
             subject: posts[i].subject,
             content: posts[i].content,
@@ -48,7 +48,7 @@ export class PostListComponent implements OnInit {
         }
       });
 
-      console.log(this.markers,"HOLA MARKERS");
+      // console.log(this.markers,"HOLA MARKERS");
       this.posts.forEach((post, i) => {
         this;
       });

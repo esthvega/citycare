@@ -1,3 +1,16 @@
 agm-map {
-    height: 300px;
+  height: 60vh;
+  width: 50%;
+  position:fixed
   }
+
+  .principal {
+    width: 100%;
+    text-align: center;
+  }
+.row {
+  background-color: white;
+}
+body {
+ background-color:  #a5d6a7
+}
