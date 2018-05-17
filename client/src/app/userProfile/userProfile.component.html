@@ -28,7 +28,7 @@ Dni:
         {{user.dni}}   
             <div *ngFor="let post of user.posts">
 <ul class="collection with-header">
-        <li class="collection-header"><h5>{{post.date | date}}</h5></li>
+        <li class="collection-header"><h5>{{post.date | date:'medium' }}</h5></li>
         <li class="collection-item">Subject: {{post.subject}}</li>
         <li class="collection-item">Content: {{post.content}}</li>
         <li class="collection-item">Is Resolve?: {{post.isResolve}}</li>

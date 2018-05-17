@@ -1,6 +1,4 @@
 <div class="container">
-    <h3> POSTS</h3>
-
     <div class="row">
         <div class="mapcontainer">
             <div class="col s4">
@@ -8,15 +6,15 @@
 
                     <div *ngFor="let post of posts">
                         <div *ngIf="!post.isResolve">
-                            {{post.date | date}} Subject:
-                            <ul>
-                                <li> {{post.subject}} </li>
-                            </ul>
-                            Address:
-                            <ul>
+                            <i> {{post.date | date }} </i>
+
+                            {{post.subject}}
+
+
+                            <!-- <ul>
                                 <li>{{post.address}}</li>
 
-                            </ul>
+                            </ul> -->
                             <a [routerLink]="['/post/detail', post._id]">Details</a>
 
                         </div>
@@ -30,9 +28,9 @@
 
                 <div *ngIf=sessionService.user>
 
-                    <button (click)="logout()"> logout </button>
-                    <a [routerLink]="['/post/new']">Add a post </a>
-                    <a [routerLink]="['/auth/private']"> My profile </a>
+                    <button class="btn logout" (click)="logout()"> logout </button>
+                    <!-- <a [routerLink]="['/post/new']">Add a post </a>
+                    <a [routerLink]="['/auth/private']"> My profile </a> -->
                 </div>
             </div>
             <div class="col s8">

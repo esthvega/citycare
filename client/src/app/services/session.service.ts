@@ -43,6 +43,7 @@ export class SessionService {
     return this.http.get(`${this.BASEURL}/auth/logout`, this.options)
     .map(() => this.handleUser())
       .catch(this.handleError);
+      
   }
 
   isLoggedIn() {

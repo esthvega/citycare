@@ -1,6 +1,4 @@
-<p>
-  postNew works!
-</p>
+
 <div class="principal">
 <div class="container">
 <form (ngSubmit)="postNew(resetForm)" #resetForm="ngForm">
@@ -10,17 +8,23 @@
   <br>
   Subject:
   <input [(ngModel)]="postInfo.subject" name="subject">
-  <br>
-  Photo:
-  <input type="file" name="file" ng2FileSelect [uploader]="uploader" id="file_upload" class="file" #myInput/>
-  <br>
+  <div class="file-field input-field">
+      <div class="btn">
+        <span>File</span>
+        <input type="file" name="file" ng2FileSelect [uploader]="uploader" id="file_upload" #myInput>
+      </div>
+    <div class="file-path-wrapper"> 
+        <input class="file-path validate" type="text" placeholder="Upload one file">
+            </div>
+    </div>
   Content:
-  <textarea [(ngModel)]="postInfo.content" name="content"> </textarea>
+  <textarea [(ngModel)]="postInfo.content" name="content" class="materialize-textarea" data-length="120" > </textarea>
 
 
-  <button>New Post</button>
+  <button class="btn">New Post</button>
 </fieldset>
 </form>
 </div>
 </div>
 <p> {{ feedback }} </p>
+

@@ -1,6 +1,20 @@
 nav {
-  background-color: #26a69a !important;
+  background-color:green !important;
   position: fixed;
   top: 0;
   z-index: 1;
+  padding: 0%, 5%;
 }
+
+.btn {
+  padding: 0 1rem;
+}
+.sidenav-trigger {
+  position:relative;
+  z-index: 2;
+  color: white;
+}
+
+/* .brand-logo { 
+padding: 0px 15px 20px 60px;
+} */

@@ -1,11 +1,11 @@
 
+
   <nav>
         <div *ngIf="session.user">
             <div class="nav-wrapper">
-                <a href="#" class="brand-logo">cityCare</a>
+                <a [routerLink]="['/']" class="brand-logo">cityCare</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                  <li>     <a [routerLink]="['/auth/private']">My profile</a></li>
-                  <!-- <li>    <a [routerLink]="['/home']"> Navigate homeee</a></li> -->
                 </ul>
               </div>
         </div>
@@ -13,19 +13,24 @@
             <div class="nav-wrapper">
                 <a href="#" class="brand-logo">cityCare</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                 <li>     <a [routerLink]="['/auth/signup']">Signup</a></li>
-                  <!-- <li>    <a [routerLink]="['/home']"> Navigate homeee</a></li> -->
+                 <li>  <a [routerLink]="['/auth/signup']">Signup</a></li>
                 </ul>
               </div>
         </div>
       </nav>
-            
-<!-- 
-<div>
+      <ul id="slide-out" class="sidenav">
+          <li><div class="user-view">
+            <div class="background">
+            </div>
+            <a href="#user"><img class="circle" src="http://res.cloudinary.com/dhxxqnbqa/image/upload/v1526566174/Project2/1526566173608.png"></a>
+          </div></li>
+          <li *ngIf="session.user"><a [routerLink]="['/post/new']"><i class="material-icons">create</i>Add a post</a></li>
+          <li *ngIf="session.user"><a [routerLink]="['/auth/private']"><i class="material-icons">perm_identity</i>My profile</a></li>
+          <li *ngIf="session.user"><button class="btn logout" (click)="session.logout()"> <i class="material-icons">perm_identity</i>Logout</button> </li>
+          <li *ngIf="!session.user"><a [routerLink]="['/auth/signup']">Signup or Login</a></li>
+          <li *ngIf="!session.user"><a [routerLink]="['/']">Posts</a></li>
+        </ul>
+        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
-<a [routerLink]="['/auth/signup']">Signup or Login</a>
 
-<a [routerLink]="['/home']"> Navigate homeee</a>
-</div> -->
 <router-outlet> </router-outlet>
-

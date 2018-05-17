@@ -1,16 +1,27 @@
 agm-map {
   height: 60vh;
-  width: 50%;
-  position:fixed
-  }
+  width: 70%;
+  position: fixed;
+}
 
-  .principal {
-    width: 100%;
-    text-align: center;
-  }
+.principal {
+  width: 100%;
+  text-align: center;
+}
 .row {
   background-color: white;
 }
 body {
- background-color:  #a5d6a7
+  background-color: #a5d6a7;
+}
+.container {
+  padding: 10%;
+}
+
+html {
+  padding: 50px 0px;
+}
+.btn, .logout {
+  padding: 0;
+  background-color: #8bc34a
 }

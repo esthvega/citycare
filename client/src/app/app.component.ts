@@ -19,9 +19,11 @@ export class AppComponent {
 error: string;
 data: any;
 
+
 constructor (private session: SessionService) {
 //  this.isLoggedIn()
 }
+
 
 // signup() {
 //   this.session.signup(this.formInfo)
