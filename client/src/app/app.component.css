@@ -8,6 +8,8 @@ nav {
 
 .btn {
   padding: 0 1rem;
+  background-color:#8bc34a;
+  margin: 10% 0 0 20%;
 }
 .sidenav-trigger {
   position:relative;

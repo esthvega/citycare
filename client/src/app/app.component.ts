@@ -24,7 +24,9 @@ constructor (private session: SessionService) {
 //  this.isLoggedIn()
 }
 
-
+logout(){
+  this.session.logout().subscribe()
+}
 // signup() {
 //   this.session.signup(this.formInfo)
 //     .subscribe(

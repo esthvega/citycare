@@ -26,7 +26,7 @@
           </div></li>
           <li *ngIf="session.user"><a [routerLink]="['/post/new']"><i class="material-icons">create</i>Add a post</a></li>
           <li *ngIf="session.user"><a [routerLink]="['/auth/private']"><i class="material-icons">perm_identity</i>My profile</a></li>
-          <li *ngIf="session.user"><button class="btn logout" (click)="session.logout()"> <i class="material-icons">perm_identity</i>Logout</button> </li>
+          <li *ngIf="session.user"><button class="btn logout" (click)="logout()"> <i class="material-icons">perm_identity</i>Logout</button> </li>
           <li *ngIf="!session.user"><a [routerLink]="['/auth/signup']">Signup or Login</a></li>
           <li *ngIf="!session.user"><a [routerLink]="['/']">Posts</a></li>
         </ul>

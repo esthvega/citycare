@@ -19,24 +19,24 @@ Dni:
 <div class="principal">
 <div class="container">
 <div *ngIf="sessionService.user">
-    <h3>Hola, {{user.username}} </h3>
-    <h5>Tus datos personales son:</h5>
-        Username: {{user.username}}
+    <h3>Hi, {{user.username}} </h3>
+       <b> Username: </b> {{user.username}}
+       <br>
             
-            <br>
-        Dni:
+       <b> Dni:  </b>
         {{user.dni}}   
+        <div *ngIf="sessionService.user.isAdmin">
+                <a [routerLink]="['/post/all']">All posts </a>
+              </div>
             <div *ngFor="let post of user.posts">
 <ul class="collection with-header">
-        <li class="collection-header"><h5>{{post.date | date:'medium' }}</h5></li>
-        <li class="collection-item">Subject: {{post.subject}}</li>
-        <li class="collection-item">Content: {{post.content}}</li>
-        <li class="collection-item">Is Resolve?: {{post.isResolve}}</li>
+        <li class="collection-header"><p>{{post.date | date:'medium' }}</p></li>
+        <li class="collection-item"> <b> Subject: </b> {{post.subject}}</li>
+        <li class="collection-item"> <b> Content: </b> {{post.content}}</li>
+        <li class="collection-item"> <b> Is Resolve?: </b> {{post.isResolve}}</li>
         <li class="collection-item"><img src="{{post.photo}}" alt="" width="200"></li>
       </ul>
             </div>
-            <div *ngIf="sessionService.user.isAdmin">
-                    <a [routerLink]="['/post/all']">All posts </a>
-                  </div>
+   
                 </div>
             </div>

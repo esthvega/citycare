@@ -10,11 +10,6 @@
 
                             {{post.subject}}
 
-
-                            <!-- <ul>
-                                <li>{{post.address}}</li>
-
-                            </ul> -->
                             <a [routerLink]="['/post/detail', post._id]">Details</a>
 
                         </div>
@@ -26,12 +21,10 @@
 
                 </div>
 
-                <div *ngIf=sessionService.user>
+                <!-- <div *ngIf=sessionService.user>
 
                     <button class="btn logout" (click)="logout()"> logout </button>
-                    <!-- <a [routerLink]="['/post/new']">Add a post </a>
-                    <a [routerLink]="['/auth/private']"> My profile </a> -->
-                </div>
+                </div> -->
             </div>
             <div class="col s8">
                 <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom">

@@ -37,9 +37,17 @@ authRoutes.post("/signup", (req, res, next) => {
         dni
       });
   
-      return theUser.save().then( user => logInPromise(user,req));
-  })
-  .then(user => res.status(200).json(user))
+      // return theUser.save().then( user => logInPromise(user,req));
+      return theUser.save().then( user => {
+        if (!user) throw new Error("The email does not exist");
+      if (!bcrypt.compareSync(password, user.password))
+        throw new Error("The password is not correct");
+      logInPromise(user, req).then(user => {
+        console.log(user);
+        return res.status(200).json(user)
+      })
+  })})
+  // .then(user => res.status(200).json(user))
   .catch(e => res.status(500).json({message:e.message}));
 });
 
@@ -106,6 +114,4 @@ authRoutes.get('/private', (req, res, next) => {
 });
 
 module.exports = authRoutes;
-
-
 

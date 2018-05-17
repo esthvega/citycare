@@ -6,7 +6,7 @@
   {{post.isResolve}}
 
 </div> -->
-<div class="container">
+<!-- <div class="container">
 <div class="principal"> 
       <div class="collection">
           <div *ngFor="let post of posts">
@@ -19,6 +19,29 @@
         </div>
       </div>
     </div>
-  </div>
+  </div> -->
+  <div class="principal">
+  <div>
+  <table>
+      <thead>
+        <tr>
+            <th>Date</th>
+            <th>Subject</th>
+            <th>Is Resolve?</th>
+            <th>Details</th>
+        </tr>
+      </thead>
 
+      <tbody *ngFor="let post of posts">
+        <tr>
+          <td>{{post.date | date}}</td>
+          <td>{{post.subject}}</td>
+          <td>{{post.isResolve}}</td>
+          <td> <a [routerLink]="['/post/detail', post._id]" class="collection-item">Details</a>  </td>
+        </tr>
+
+      </tbody>
+    </table>
+</div>
+</div>
       <!--   -->
