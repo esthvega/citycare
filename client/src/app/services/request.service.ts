@@ -6,22 +6,22 @@ import "rxjs/add/operator/catch";
 
 @Injectable()
 export class RequestService {
-  BASEURL: string = "http://localhost:3000/post";
+  BASEURL: string = "http://localhost:3000";
   options: any = { withCredentials: true };
 
   constructor(private http: Http) {}
   user: any;
 
   getPostList() {
-    return this.http.get(`${this.BASEURL}`).map((res: Response) => res.json());
+    return this.http.get(`${this.BASEURL}/post`).map((res: Response) => res.json());
   }
 
   getPost(id) {
-    return this.http.get(`${this.BASEURL}/detail/${id}`).map(res => res.json());
+    return this.http.get(`${this.BASEURL}/post/detail/${id}`).map(res => res.json());
   }
   postNew(info) {
     return this.http
-      .post(`${this.BASEURL}/new`, info, this.options)
+      .post(`${this.BASEURL}/post/new`, info, this.options)
       .map(res => res.json());
   }
 

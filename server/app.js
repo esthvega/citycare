@@ -11,10 +11,11 @@ const path = require("path");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const cors = require('cors');
+const mongoUri = process.env.MONGODB_URI;
 
 mongoose.Promise = Promise;
 mongoose
-  .connect("mongodb://localhost/server", { useMongoClient: true })
+  .connect(mongoUri, { useMongoClient: true })
   .then(() => {
     console.log("Connected to Mongo!");
   })
